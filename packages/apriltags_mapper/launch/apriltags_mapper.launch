@@ -1,0 +1,30 @@
+<launch>
+  <!-- required arguments -->
+  <arg name="origin_tag"/>
+  <arg name="detections_topic"/>
+  <arg name="camera_frame"/>
+  <arg name="tags_range"/>
+
+  <!-- optional arguments -->
+  <arg name="image_topic" default=""/>
+  <arg name="camera_topic" default=""/>
+  <arg name="snap_position" default="false"/>
+  <arg name="snap_orientation" default="false"/>
+  <arg name="orientation_resolution_deg" default="45"/>
+  <arg name="pkg_name" value="apriltags_mapper"/>
+
+  <!-- NODE: apriltag_mapper_node -->
+  <node name="apriltags_mapper" pkg="$(arg pkg_name)" type="apriltags_mapper_node.py" output="screen">
+    <!-- node parameters -->
+    <param name="origin_tag" value="$(arg origin_tag)"/>
+    <param name="detections_topic" value="$(arg detections_topic)"/>
+    <param name="camera_frame" value="$(arg camera_frame)"/>
+    <param name="tags_range" value="$(arg tags_range)"/>
+    <param name="image_topic" value="$(arg image_topic)"/>
+    <param name="camera_topic" value="$(arg camera_topic)"/>
+    <param name="snap_position" value="$(arg snap_position)"/>
+    <param name="snap_orientation" value="$(arg snap_orientation)"/>
+    <param name="orientation_resolution_deg" value="$(arg orientation_resolution_deg)"/>
+  </node>
+
+</launch>
